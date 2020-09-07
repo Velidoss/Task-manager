@@ -1,25 +1,30 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { Home } from "./pages/Home";
+import { About } from "./pages/About";
+import { Navbar } from "./components/Navbar";
+import { AlertState } from "./context/alert/AlertState";
+import { FirebaseState } from "./context/Firebase/FirebaseState";
+import { Cancelled } from "./components/Cancelled";
+import { Completed } from "./components/Completed";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <FirebaseState>
+      <AlertState>
+        <BrowserRouter>
+          <Navbar />
+          <div className="container pt-4">
+            <Switch>
+              <Route path={"/"} exact component={Home} />
+              <Route path={"/about"} component={About} />
+              <Route path={"/cancelled"} component={Cancelled} />
+              <Route path={"/completed"} component={Completed} />
+            </Switch>
+          </div>
+        </BrowserRouter>
+      </AlertState>
+    </FirebaseState>
   );
 }
 

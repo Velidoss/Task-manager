@@ -1,5 +1,10 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
+#firebase
+/.firebase/*
+firebase.json
+.firebserc
+
 # dependencies
 /node_modules
 /.pnp
@@ -9,7 +14,7 @@
 /coverage
 
 # production
-/build
+/build/
 
 # misc
 .DS_Store
